@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double base, result = 1;
+    int exponent;
+
+    cout << "Enter base: ";
+    cin >> base;
+    cout << "Enter exponent: ";
+    cin >> exponent;
+
+    // handle negative exponent
+    int absExp = (exponent < 0) ? -exponent : exponent;
+
+    for (int i = 1; i <= absExp; i++) {
+        result *= base;
+    }
+
+    if (exponent < 0)
+        result = 1 / result;
+
+    cout << base << " raised to the power " << exponent << " is: " << result << endl;
+
+    return 0;
+}
