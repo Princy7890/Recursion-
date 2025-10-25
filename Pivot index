@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int pivotIndex(vector<int>& nums) {
+    int totalSum = 0;
+    for (int num : nums)
+        totalSum += num;   // Step 1: calculate total sum
+
+    int leftSum = 0;
+    for (int i = 0; i < nums.size(); i++) {
+        // Step 2: check if left sum == right sum
+        if (2 * leftSum + nums[i] == totalSum)
+            return i;  // pivot index found
+        
+        leftSum += nums[i]; // Step 3: update left sum
+    }
+
+    return -1; // if no pivot index
+}
+
+int main() {
+    int n;
+    cout << "Enter size of array: ";
+    cin >> n;
+
+    vector<int> nums(n);
+    cout << "Enter array elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> nums[i];
+
+    int index = pivotIndex(nums);
+    if (index != -1)
+        cout << "Pivot index: " << index << endl;
+    else
+        cout << "No pivot index found." << endl;
+
+    return 0;
+}
